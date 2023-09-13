@@ -12,4 +12,4 @@ class Patient(models.Model):
     
     
     def __str__(self):
-        return f'{self.email}'
+        return f'{self.name} {self.age} {self.deptofdoctor} {self.doctor} {self.email} {self.date}'

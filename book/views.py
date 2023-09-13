@@ -19,7 +19,7 @@ def send(request):
     name=request.POST['name']
     # test=Patient.objects.all()
     user = Patient.objects.all().filter(email=email)
-    print(user,email,name)
+    # print(user,email,name)
     print("yaha tak aa gaye ")
     email_subject="Booking Confirmation"
     message=render_to_string('activate.html',{
@@ -36,13 +36,17 @@ def send(request):
      
      
      # context = {'receipes':queryset} 
-
+    
     
     try:
-      context = {'q':user}
-      print(context)
-      print("send ho chuka",type(user))
-      return render(request,'index.html',context=context)
+      dt = str(user).split()
+      print(f"dt is: {dt}\n")
+      # c = {'name':dt[0],'age':dt[1],'dp_of_doc':dt[2],'doc':dt[3],'ema':dt[4],'date':dt[5]}
+      c = {'f':dt[2:]}
+      print(f"\n{c}\n")
+      # print(context)
+      # print("send ho chuka",type(user))
+      return render(request,'index.html',context=c)
     except Exception as e:
       print(e,"\n\nerror\n\n")
     # return render(request,'index.html',context=)
